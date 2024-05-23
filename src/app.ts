@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import express from 'express'
 import http from 'http'
 import { login, register } from './controllers/auth.controller'
-import { setupSocket } from './socket'
+import { setupSocketIO } from './controllers/socket.controller'
 
 dotenv.config()
 
@@ -11,7 +11,7 @@ const app = express()
 const server = http.createServer(app)
 const io = require('socket.io')(server)
 
-setupSocket(io)
+setupSocketIO(io)
 app.use(express.json())
 
 // auth routes 
